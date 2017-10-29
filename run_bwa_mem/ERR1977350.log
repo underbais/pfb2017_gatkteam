@@ -5,7 +5,7 @@
 [M::mem_pestat] skip orientation FR as there are not enough pairs
 [M::mem_pestat] skip orientation RF as there are not enough pairs
 [M::mem_pestat] skip orientation RR as there are not enough pairs
-[M::mem_process_seqs] Processed 40 reads in 0.020 CPU sec, 0.021 real sec
+[M::mem_process_seqs] Processed 40 reads in 0.008 CPU sec, 0.008 real sec
 [main] Version: 0.7.15-r1140
-[main] CMD: bwa mem -M -t 8 ./../ref/hg38.fa ERR1977350_1_sub.fastq ERR1977350_2_sub.fastq
-[main] Real time: 35.493 sec; CPU: 22.648 sec
+[main] CMD: bwa mem -M -t 1 ./../../../ref/hg38.fa ERR1977350_1_sub.fastq ERR1977350_2_sub.fastq
+[main] Real time: 27.636 sec; CPU: 2.784 sec
