@@ -11,7 +11,7 @@ import subprocess
 
 
 input_bam = sys.argv[1]
-sample_name = os.path.splitext(input_bam)[0]
+sample_name = (os.path.basename(input_bam)).split('.')[0]
 
 
 def call_picard_mrdkup(input_bam, picard_output = "picard_output"):
