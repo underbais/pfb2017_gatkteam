@@ -1,0 +1,75 @@
+INFO  18:44:19,316 HelpFormatter - ---------------------------------------------------------------------------------- 
+INFO  18:44:19,318 HelpFormatter - The Genome Analysis Toolkit (GATK) v3.8-0-ge9d806836, Compiled 2017/07/28 21:26:50 
+INFO  18:44:19,318 HelpFormatter - Copyright (c) 2010-2016 The Broad Institute 
+INFO  18:44:19,318 HelpFormatter - For support and documentation go to https://software.broadinstitute.org/gatk 
+INFO  18:44:19,318 HelpFormatter - [Sun Oct 29 18:44:19 UTC 2017] Executing on Linux 4.4.0-1038-aws amd64 
+INFO  18:44:19,318 HelpFormatter - OpenJDK 64-Bit Server VM 1.8.0_121-b15 
+INFO  18:44:19,321 HelpFormatter - Program Args: -T HaplotypeCaller -R /data/project/reference/hg38.fa -I /data/project/test_bam/ERR50_h1k_testfile.addrg.bam --genotyping_mode DISCOVERY -stand_call_conf 30 -o test_vcf/ERR50_h1k_testfile.addrg.vcf 
+INFO  18:44:19,328 HelpFormatter - Executing as cunde@ip-172-30-0-147 on Linux 4.4.0-1038-aws amd64; OpenJDK 64-Bit Server VM 1.8.0_121-b15. 
+INFO  18:44:19,328 HelpFormatter - Date/Time: 2017/10/29 18:44:19 
+INFO  18:44:19,329 HelpFormatter - ---------------------------------------------------------------------------------- 
+INFO  18:44:19,329 HelpFormatter - ---------------------------------------------------------------------------------- 
+ERROR StatusLogger Unable to create class org.apache.logging.log4j.core.impl.Log4jContextFactory specified in jar:file:/usr/local/anaconda/opt/gatk-3.8/GenomeAnalysisTK.jar!/META-INF/log4j-provider.properties
+ERROR StatusLogger Log4j2 could not find a logging implementation. Please add log4j-core to the classpath. Using SimpleLogger to log to the console...
+INFO  18:44:19,427 GenomeAnalysisEngine - Deflater: IntelDeflater 
+INFO  18:44:19,427 GenomeAnalysisEngine - Inflater: IntelInflater 
+INFO  18:44:19,428 GenomeAnalysisEngine - Strictness is SILENT 
+INFO  18:44:19,595 GenomeAnalysisEngine - Downsampling Settings: Method: BY_SAMPLE, Target Coverage: 500 
+INFO  18:44:19,600 SAMDataSource$SAMReaders - Initializing SAMRecords in serial 
+INFO  18:44:19,632 SAMDataSource$SAMReaders - Done initializing BAM readers: total time 0.03 
+INFO  18:44:19,652 HCMappingQualityFilter - Filtering out reads with MAPQ < 20 
+INFO  18:44:19,746 GenomeAnalysisEngine - Preparing for traversal over 1 BAM files 
+INFO  18:44:19,785 GenomeAnalysisEngine - Done preparing for traversal 
+INFO  18:44:19,785 ProgressMeter - [INITIALIZATION COMPLETE; STARTING PROCESSING] 
+INFO  18:44:19,785 ProgressMeter -                 |      processed |    time |         per 1M |           |   total | remaining 
+INFO  18:44:19,786 ProgressMeter -        Location | active regions | elapsed | active regions | completed | runtime |   runtime 
+INFO  18:44:19,786 HaplotypeCaller - Disabling physical phasing, which is supported only for reference-model confidence output 
+INFO  18:44:19,826 StrandBiasTest - SAM/BAM data was found. Attempting to use read data to calculate strand bias annotations values. 
+WARN  18:44:19,826 InbreedingCoeff - Annotation will not be calculated. InbreedingCoeff requires at least 10 unrelated samples. 
+INFO  18:44:19,827 StrandBiasTest - SAM/BAM data was found. Attempting to use read data to calculate strand bias annotations values. 
+INFO  18:44:19,877 HaplotypeCaller - Using global mismapping rate of 45 => -4.5 in log10 likelihood units 
+INFO  18:44:20,921 VectorLoglessPairHMM - Using OpenMP multi-threaded AVX-accelerated native PairHMM implementation 
+[INFO] Available threads: 16
+[INFO] Requested threads: 1
+[INFO] Using 1 threads
+WARN  18:44:20,963 HaplotypeScore - Annotation will not be calculated, must be called from UnifiedGenotyper, not HaplotypeCaller 
+INFO  18:44:49,788 ProgressMeter -  chr1:116878600              0.0    30.0 s           49.6 w        3.6%    13.7 m      13.2 m 
+INFO  18:45:19,789 ProgressMeter -  chr1:241531352              0.0    60.0 s           99.2 w        7.5%    13.3 m      12.3 m 
+INFO  18:45:49,790 ProgressMeter - chr10:111835321     2.48956422E8    90.0 s            0.0 s       11.2%    13.3 m      11.8 m 
+INFO  18:46:19,791 ProgressMeter -  chr11:97222158     3.82753844E8   120.0 s            0.0 s       15.0%    13.4 m      11.4 m 
+INFO  18:46:49,791 ProgressMeter -  chr12:81100847     5.17940782E8     2.5 m            0.0 s       18.7%    13.4 m      10.9 m 
+INFO  18:47:19,792 ProgressMeter -  chr13:70395644     6.51216091E8     3.0 m            0.0 s       22.5%    13.3 m      10.3 m 
+INFO  18:47:49,794 ProgressMeter -  chr14:80201800     7.65580419E8     3.5 m            0.0 s       26.4%    13.3 m       9.8 m 
+INFO  18:48:19,795 ProgressMeter -  chr15:94667270     8.73716757E8     4.0 m            0.0 s       30.2%    13.3 m       9.3 m 
+INFO  18:48:49,796 ProgressMeter -  chr17:23817783    1.068367298E9     4.5 m            0.0 s       34.0%    13.2 m       8.7 m 
+INFO  18:49:29,797 ProgressMeter -  chr19:25963366    1.232577005E9     5.2 m            0.0 s       39.2%    13.2 m       8.0 m 
+INFO  18:49:59,798 ProgressMeter -   chr2:89089885    1.291937141E9     5.7 m            0.0 s       43.0%    13.2 m       7.5 m 
+INFO  18:50:39,799 ProgressMeter -  chr20:15296254     1.53413067E9     6.3 m            0.0 s       48.3%    13.1 m       6.8 m 
+INFO  18:51:09,800 ProgressMeter -  chr22:30943900     1.64528482E9     6.8 m            0.0 s       52.2%    13.1 m       6.2 m 
+INFO  18:51:49,802 ProgressMeter -  chr3:147141100    1.697457606E9     7.5 m            0.0 s       57.5%    13.0 m       5.5 m 
+INFO  18:52:19,803 ProgressMeter -   chr4:73625711    1.895908562E9     8.0 m            0.0 s       61.4%    13.0 m       5.0 m 
+INFO  18:52:49,804 ProgressMeter -    chr5:7008907    2.086332826E9     8.5 m            0.0 s       65.2%    13.0 m       4.5 m 
+INFO  18:53:19,805 ProgressMeter -  chr5:135130691    2.086332826E9     9.0 m            0.0 s       69.2%    13.0 m       4.0 m 
+INFO  18:53:49,806 ProgressMeter -   chr6:79799200    2.267963774E9     9.5 m            0.0 s       73.2%    13.0 m       3.5 m 
+INFO  18:54:19,807 ProgressMeter -   chr7:35459576    2.438769753E9    10.0 m            0.0 s       77.1%    13.0 m       3.0 m 
+INFO  18:54:49,808 ProgressMeter -    chr8:2696800    2.598115726E9    10.5 m            0.0 s       81.0%    13.0 m       2.5 m 
+INFO  18:55:19,809 ProgressMeter -  chr8:130668621    2.598115726E9    11.0 m            0.0 s       85.0%    12.9 m     116.0 s 
+INFO  18:55:49,810 ProgressMeter -  chr9:111721089    2.743254362E9    11.5 m            0.0 s       89.0%    12.9 m      85.0 s 
+INFO  18:56:19,811 ProgressMeter - chr6_GL000255v2_alt:1966758    2.977847399E9    12.0 m            0.0 s       92.8%    12.9 m      55.0 s 
+INFO  18:56:49,812 ProgressMeter -  chrX:109688528    2.995980555E9    12.5 m            0.0 s       96.8%    12.9 m      25.0 s 
+INFO  18:57:14,846 VectorLoglessPairHMM - Time spent in setup for JNI call : 0.0014123760000000001 
+INFO  18:57:14,846 PairHMM - Total compute time in PairHMM computeLikelihoods() : 0.025276156 
+INFO  18:57:14,847 HaplotypeCaller - Ran local assembly on 7 active regions 
+INFO  18:57:14,852 ProgressMeter -            done    3.209286105E9    12.9 m            0.0 s      100.0%    12.9 m       0.0 s 
+INFO  18:57:14,852 ProgressMeter - Total runtime 775.07 secs, 12.92 min, 0.22 hours 
+INFO  18:57:14,852 MicroScheduler - 8103 reads were filtered out during the traversal out of approximately 9544 total reads (84.90%) 
+INFO  18:57:14,852 MicroScheduler -   -> 0 reads (0.00% of total) failing BadCigarFilter 
+INFO  18:57:14,852 MicroScheduler -   -> 0 reads (0.00% of total) failing DuplicateReadFilter 
+INFO  18:57:14,853 MicroScheduler -   -> 0 reads (0.00% of total) failing FailsVendorQualityCheckFilter 
+INFO  18:57:14,853 MicroScheduler -   -> 8103 reads (84.90% of total) failing HCMappingQualityFilter 
+INFO  18:57:14,853 MicroScheduler -   -> 0 reads (0.00% of total) failing MalformedReadFilter 
+INFO  18:57:14,853 MicroScheduler -   -> 0 reads (0.00% of total) failing MappingQualityUnavailableFilter 
+INFO  18:57:14,853 MicroScheduler -   -> 0 reads (0.00% of total) failing NotPrimaryAlignmentFilter 
+INFO  18:57:14,853 MicroScheduler -   -> 0 reads (0.00% of total) failing UnmappedReadFilter 
+------------------------------------------------------------------------------------------
+Done. ------------------------------------------------------------------------------------------
