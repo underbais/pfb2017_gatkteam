@@ -1,21 +1,21 @@
-01:35:19.808 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/usr/local/anaconda/share/picard-2.14-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Mon Oct 30 01:35:19 UTC 2017] MarkDuplicates INPUT=[.//samtools_output/ERR1977350.sorted.bam] OUTPUT=./picard_output/ERR1977350.mrkdup.sorted.bam METRICS_FILE=./picard_output/ERR1977350.mrkdup.sorted.bam.metrics.txt    MAX_SEQUENCES_FOR_DISK_READ_ENDS_MAP=50000 MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=8000 SORTING_COLLECTION_SIZE_RATIO=0.25 TAG_DUPLICATE_SET_MEMBERS=false REMOVE_SEQUENCING_DUPLICATES=false TAGGING_POLICY=DontTag CLEAR_DT=true REMOVE_DUPLICATES=false ASSUME_SORTED=false DUPLICATE_SCORING_STRATEGY=SUM_OF_BASE_QUALITIES PROGRAM_RECORD_ID=MarkDuplicates PROGRAM_GROUP_NAME=MarkDuplicates READ_NAME_REGEX=<optimized capture of last three ':' separated fields as numeric values> OPTICAL_DUPLICATE_PIXEL_DISTANCE=100 MAX_OPTICAL_DUPLICATE_SET_SIZE=300000 ADD_PG_TAG_TO_READS=true VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Mon Oct 30 01:35:19 UTC 2017] Executing as gbauc@ip-172-30-0-147 on Linux 4.4.0-1038-aws amd64; OpenJDK 64-Bit Server VM 1.8.0_121-b15; Deflater: Intel; Inflater: Intel; Picard version: 2.14-SNAPSHOT
-INFO	2017-10-30 01:35:19	MarkDuplicates	Start of doWork freeMemory: 998720304; totalMemory: 1012924416; maxMemory: 15010365440
-INFO	2017-10-30 01:35:19	MarkDuplicates	Reading input file and constructing read end information.
-INFO	2017-10-30 01:35:19	MarkDuplicates	Will retain up to 54385382 data points before spilling to disk.
-WARNING	2017-10-30 01:35:20	AbstractOpticalDuplicateFinderCommandLineProgram	Default READ_NAME_REGEX '<optimized capture of last three ':' separated fields as numeric values>' did not match read name '11'.  You may need to specify a READ_NAME_REGEX in order to correctly identify optical duplicates.  Note that this message will not be emitted again even if other read names do not match the regex.
-INFO	2017-10-30 01:35:20	MarkDuplicates	Read 40 records. 0 pairs never matched.
-INFO	2017-10-30 01:35:20	MarkDuplicates	After buildSortedReadEndLists freeMemory: 568457248; totalMemory: 1012924416; maxMemory: 15010365440
-INFO	2017-10-30 01:35:20	MarkDuplicates	Will retain up to 469073920 duplicate indices before spilling to disk.
-INFO	2017-10-30 01:35:21	MarkDuplicates	Traversing read pair information and detecting duplicates.
-INFO	2017-10-30 01:35:21	MarkDuplicates	Traversing fragment information and detecting duplicates.
-INFO	2017-10-30 01:35:21	MarkDuplicates	Sorting list of duplicate records.
-INFO	2017-10-30 01:35:21	MarkDuplicates	After generateDuplicateIndexes freeMemory: 1004381664; totalMemory: 4765777920; maxMemory: 15010365440
-INFO	2017-10-30 01:35:21	MarkDuplicates	Marking 0 records as duplicates.
-INFO	2017-10-30 01:35:21	MarkDuplicates	Found 0 optical duplicate clusters.
-INFO	2017-10-30 01:35:21	MarkDuplicates	Reads are assumed to be ordered by: coordinate
-INFO	2017-10-30 01:35:21	MarkDuplicates	Before output close freeMemory: 4756349152; totalMemory: 4765777920; maxMemory: 15010365440
-INFO	2017-10-30 01:35:21	MarkDuplicates	After output close freeMemory: 4756417872; totalMemory: 4765777920; maxMemory: 15010365440
-[Mon Oct 30 01:35:21 UTC 2017] picard.sam.markduplicates.MarkDuplicates done. Elapsed time: 0.03 minutes.
+02:13:34.969 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/usr/local/anaconda/share/picard-2.14-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Mon Oct 30 02:13:34 UTC 2017] MarkDuplicates INPUT=[.//samtools_output/ERR1977350.sorted.bam] OUTPUT=./picard_output/ERR1977350.mrkdup.sorted.bam METRICS_FILE=./picard_output/ERR1977350.mrkdup.sorted.bam.metrics.txt    MAX_SEQUENCES_FOR_DISK_READ_ENDS_MAP=50000 MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=8000 SORTING_COLLECTION_SIZE_RATIO=0.25 TAG_DUPLICATE_SET_MEMBERS=false REMOVE_SEQUENCING_DUPLICATES=false TAGGING_POLICY=DontTag CLEAR_DT=true REMOVE_DUPLICATES=false ASSUME_SORTED=false DUPLICATE_SCORING_STRATEGY=SUM_OF_BASE_QUALITIES PROGRAM_RECORD_ID=MarkDuplicates PROGRAM_GROUP_NAME=MarkDuplicates READ_NAME_REGEX=<optimized capture of last three ':' separated fields as numeric values> OPTICAL_DUPLICATE_PIXEL_DISTANCE=100 MAX_OPTICAL_DUPLICATE_SET_SIZE=300000 ADD_PG_TAG_TO_READS=true VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Mon Oct 30 02:13:34 UTC 2017] Executing as gbauc@ip-172-30-0-147 on Linux 4.4.0-1038-aws amd64; OpenJDK 64-Bit Server VM 1.8.0_121-b15; Deflater: Intel; Inflater: Intel; Picard version: 2.14-SNAPSHOT
+INFO	2017-10-30 02:13:35	MarkDuplicates	Start of doWork freeMemory: 998720440; totalMemory: 1012924416; maxMemory: 15010365440
+INFO	2017-10-30 02:13:35	MarkDuplicates	Reading input file and constructing read end information.
+INFO	2017-10-30 02:13:35	MarkDuplicates	Will retain up to 54385382 data points before spilling to disk.
+WARNING	2017-10-30 02:13:35	AbstractOpticalDuplicateFinderCommandLineProgram	Default READ_NAME_REGEX '<optimized capture of last three ':' separated fields as numeric values>' did not match read name '11'.  You may need to specify a READ_NAME_REGEX in order to correctly identify optical duplicates.  Note that this message will not be emitted again even if other read names do not match the regex.
+INFO	2017-10-30 02:13:35	MarkDuplicates	Read 40 records. 0 pairs never matched.
+INFO	2017-10-30 02:13:35	MarkDuplicates	After buildSortedReadEndLists freeMemory: 568457168; totalMemory: 1012924416; maxMemory: 15010365440
+INFO	2017-10-30 02:13:35	MarkDuplicates	Will retain up to 469073920 duplicate indices before spilling to disk.
+INFO	2017-10-30 02:13:36	MarkDuplicates	Traversing read pair information and detecting duplicates.
+INFO	2017-10-30 02:13:36	MarkDuplicates	Traversing fragment information and detecting duplicates.
+INFO	2017-10-30 02:13:36	MarkDuplicates	Sorting list of duplicate records.
+INFO	2017-10-30 02:13:36	MarkDuplicates	After generateDuplicateIndexes freeMemory: 1004381584; totalMemory: 4765777920; maxMemory: 15010365440
+INFO	2017-10-30 02:13:36	MarkDuplicates	Marking 0 records as duplicates.
+INFO	2017-10-30 02:13:36	MarkDuplicates	Found 0 optical duplicate clusters.
+INFO	2017-10-30 02:13:36	MarkDuplicates	Reads are assumed to be ordered by: coordinate
+INFO	2017-10-30 02:13:36	MarkDuplicates	Before output close freeMemory: 4756349168; totalMemory: 4765777920; maxMemory: 15010365440
+INFO	2017-10-30 02:13:36	MarkDuplicates	After output close freeMemory: 4756418008; totalMemory: 4765777920; maxMemory: 15010365440
+[Mon Oct 30 02:13:36 UTC 2017] picard.sam.markduplicates.MarkDuplicates done. Elapsed time: 0.03 minutes.
 Runtime.totalMemory()=4765777920
