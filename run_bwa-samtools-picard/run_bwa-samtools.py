@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#!/usr/bin/env python3
 # python3 run_bwa_mem.py ./../ref/hg38.fa ./../../cunde/FASTQ/ERR1977350_1.fastq ./../../cunde/FASTQ/ERR1977350_2.fastq > test
 
 import os, sys, re
@@ -104,6 +104,77 @@ if filepath_samtool is None:
 #print(filepath_samtool)
 #sys.exit(0)
 
+#### PICARD FAIDX
+#################
+
+# creating sequence dictionary with Picard
+
+input_ref = sys.argv[1] #full path to ref fasta
+#outpath = sys.argv[2]
+
+def run_picard_CSD(input_ref, ref_genome = "ref_genome", my_path = "./"):
+    execution = 0
+    try:
+        # create reference genome folder
+        if not os.path.exists(ref_genome):
+            os.makedirs(ref_genome)
+                                
+        #run Picard CSD and samtools faidx on reference fasta file
+        out_file_name  = os.path.basename(input_ref).split(".") # list of split input bam file name
+        out_file = "{}/{}/{}.dict".format(my_path,ref_genome,out_file_name[0])
+        cmd = "java -jar /usr/local/anaconda/share/picard-2.14-0/picard.jar CreateSequenceDictionary R={} O={}".format(input_ref, out_file)
+        proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+	#get output and errors
+        outs,errs = proc.communicate()
+        out_log =  open("{}.log".format(out_file_name[0]), "w")
+
+	#write output
+        out_errs = errs.decode("ascii")
+        out_log.write(out_errs)
+        out_log.close()
+
+    except Exception as e:
+        print(str(e))
+        execution = 1
+    return execution  #return the proc object inclunding binary output and error log
+
+def run_samtools_faidx(input_ref,ref_genome = "ref_genome", my_path = "./"):
+    execution = 0
+    try:
+        # create reference genome folder
+        if not os.path.exists(ref_genome):
+            os.makedirs(ref_genome)
+                                
+        #run samtools faidx on reference fasta file
+        out_file_name  = os.path.basename(input_ref).split(".") # list of split input bam file name
+        out_file = "{}/{}/{}.dict".format(my_path,ref_genome,out_file_name[0])
+        cmd = "nohup samtools faidx {}".format(input_ref)
+        proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+        #get output and errors
+        outs,errs = proc.communicate()
+        out_log =  open("{}.log".format(out_file_name[0]), "w")
+
+        #write output
+        out_errs = errs.decode("ascii")
+        out_log.write(out_errs)
+        out_log.close()
+    except Exception as e:
+        print(str(e))
+        execution = 1
+    return execution  #return the proc object inclunding binary output and error log
+
+picard = run_picard_CSD(input_ref)
+samtools = run_samtools_faidx(input_ref)
+#print('outvalue of picard', picard)
+#print('outvalue of samtools', samtools)
+run_picard_CSD(input_ref)
+run_samtools_faidx(input_ref)
+#sys.exit(0)
+
+
+
 #### PICARD MD function
 ####################
 # Function will return a '.mrkdup.sorted.bam' file
@@ -167,12 +238,12 @@ sample_name = (os.path.basename(input_picard_md)).split('.')[0]
 
 outpath = sys.argv[2]
 
-def call_picard_groups(input_picard_md, picard_arrg_out = "picard_arrg_out", my_path = "./"):
+def call_picard_groups(input_picard_md, picard_arrg_output = "picard_arrg_output", my_path = "./"):
     execution = 0
     try:
-        if not os.path.exists(picard_arrg_out):
-            os.makedirs(picard_arrg_out)
-        file_out = "{}/{}/{}.arrg.mrkdup.sorted.bam".format(my_path,picard_arrg_out,sample_name)
+        if not os.path.exists(picard_arrg_output):
+            os.makedirs(picard_arrg_output)
+        file_out = "{}/{}/{}.arrg.mrkdup.sorted.bam".format(my_path,picard_arrg_output,sample_name)
         #print(file_out)
         log_out =  "{}/picard.arrg.mrkdup.sorted.bam.log".format(my_path)
         #print(log_out)
@@ -204,8 +275,4 @@ if filepath_picard_arrg is None:
     sys.exit(1)
 print(filepath_picard_arrg)
 sys.exit(0)
-
-
-#### Picard CSD_FAIDX
-#####################
 
