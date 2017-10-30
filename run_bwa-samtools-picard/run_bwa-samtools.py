@@ -18,7 +18,7 @@ refgen = sys.argv[1]
 fastq_r1 = sys.argv[2]
 fastq_r2 = sys.argv[3]
 
-def call_bwa(refgen, fastq_r1, fastq_r2, threads = 1, mark_split = "-M", bwa_output = "bwa_output", my_path = './'):
+def call_bwa(refgen, fastq_r1, fastq_r2, threads = 16, mark_split = "-M", bwa_output = "bwa_output", my_path = './'):
     #execution = 0
     try:            
         # create bwa output folder
@@ -26,12 +26,12 @@ def call_bwa(refgen, fastq_r1, fastq_r2, threads = 1, mark_split = "-M", bwa_out
             os.makedirs(bwa_output)
         out_file_name = fastq_r1.split("_")[0]
         file_out = "{}/{}/{}.sam".format(my_path,bwa_output,out_file_name)
-        #print(file_out)
+        print(file_out)
         log_out =  "{}/{}.log".format(my_path,bwa_output)
 
         #run bwa mem
         cmd = "bwa mem {} -t {} {} {} {} > {}".format(mark_split, threads, refgen,fastq_r1,fastq_r2,file_out)
-        #print(cmd)
+        print(cmd)
         proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         #get output and errors
@@ -224,7 +224,7 @@ filepath_picard_md = call_picard_md(input_bam)
 if filepath_picard_md is None:
     print('"something went wrong in Picard_mark_duplicates"')
     sys.exit(1)
-    print(filepath_picard_md)
+print('picard MD', filepath_picard_md)
 #sys.exit(0)
             
 ##### PICARD function ARRG
@@ -273,7 +273,7 @@ print(filepath_picard_arrg)
 if filepath_picard_arrg is None:
     print('"something went wrong in Picard_ARRG"')
     sys.exit(1)
-#print(filepath_picard_arrg)
+print('picard arrg',filepath_picard_arrg)
 #sys.exit(0)
 
 #### Samtool indexing
@@ -283,7 +283,7 @@ if filepath_picard_arrg is None:
 # We will use the function as one step in our 'pipeline'.
 
 input_picard_arrg = filepath_picard_arrg
-#print(input_picard_arrg)
+print('input_picard_arrg', input_picard_arrg)
 #sample_name = (os.path.basename(input_bam)).split('.')[0]
 sample_name = (os.path.basename(input_picard_arrg)).split('.')[0]
 #print(sample_name)
@@ -291,14 +291,13 @@ sample_name = (os.path.basename(input_picard_arrg)).split('.')[0]
 def call_samtools_index(input_picard_arrg, picard_arrg_output = "picard_arrg_output", my_path = "./"):
     execution = 0
     try:
-        if not os.path.exists(input_picard_arrg):
-            os.makedirs(input_picard_arrg)
-
-        #file_out = "{}/{}/{}.arrg.mrkdup.indexed.bam".format(my_path,picard_arrg_output,sample_name)
+       
+        file_out = "{}".format(input_picard_arrg) 
+        #file_out = "{}/{}/{}.arrg.mrkdup.sorted.bam".format(my_path,picard_arrg_output,sample_name)
         #print(file_out)
-        log_out =  "{}/picard.arrg.mrkdup.indexed.bam.log".format(my_path)
+        log_out =  "{}/picard.arrg.mrkdup.sorted.bam.log".format(my_path)
         #print(log_out)
-        cmd = "samtools index {}/{}/{}.arrg.mrkdup.sorted.bam".format(my_path,picard_arrg_output,sample_name)
+        cmd = "samtools index {}".format(file_out)
         proc = subprocess.Popen(cmd, shell = True, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         #print(cmd)
         
@@ -308,7 +307,7 @@ def call_samtools_index(input_picard_arrg, picard_arrg_output = "picard_arrg_out
         out_log = open(log_out, "w")
         out_log.write = (out_errs)
         out_log.close()
-        execution = cmd
+        execution = file_out
         
     except Exception as e:
         print(str(e))
@@ -316,12 +315,12 @@ def call_samtools_index(input_picard_arrg, picard_arrg_output = "picard_arrg_out
     return execution  #return the proc object inclunding binary output and error log
 
 filepath_picard_arrg = call_samtools_index(input_picard_arrg)
-#print(filepath_picard_arrg)
+print(filepath_picard_arrg)
     
 if filepath_picard_arrg is None:
     print('"something went wrong in Picard indexing"')
     sys.exit(1)
-print(filepath_picard_arrg)
+print('samtool indexing',filepath_picard_arrg)
 #sys.exit(0)
                                     
 #### run GATK
@@ -350,14 +349,14 @@ def run_gatk(refpath, bamfile, gatk_out = "gatk_out", my_path = "./", conf = 30)
         out_file_name = os.path.basename(bamfile).split(".ba")[0]
         print(out_file_name)
         file_out = "{}/{}/{}.vcf".format(my_path,gatk_out,out_file_name)
-        print(out_file)
-        cmd = "gatk -T HaplotypeCaller -R {} -I {} --genotyping_mode DISCOVERY -stand_call_conf {} -o {}".format(refpath, bamfile, conf, out_file)
+        print(file_out)
+        cmd = "gatk -T HaplotypeCaller -R {} -I {} --genotyping_mode DISCOVERY -stand_call_conf {} -o {}".format(refpath, bamfile, conf, file_out)
         print(cmd)
         proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         #get output and errors
         outs,errs = proc.communicate()
-        out_log =  open("{}.log".format(out_file), "w")
+        out_log =  open("{}.log".format(file_out), "w")
 
         #write output (from byte to ascii) in .sam
         out_errs = errs.decode("ascii")
@@ -376,5 +375,5 @@ print(filepath_gatk)
 if filepath_gatk is None:
     print('"something went wrong in GATK"')
     sys.exit(1)
-print(filepath_picard_arrg)
+print(filepath_gatk)
 #sys.exit(0)               
