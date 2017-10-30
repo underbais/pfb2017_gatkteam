@@ -1,3 +1,8 @@
+
+
+
+
+
 #!/usr/bin/env python3
 
 # Script to create a function that will sort fastq seqs and convert .sam files to .bam files.
