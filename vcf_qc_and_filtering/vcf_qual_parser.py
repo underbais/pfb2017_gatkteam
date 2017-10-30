@@ -14,16 +14,21 @@ AFs_list = []
 DPs_list = []
 for line in fh:
     if not line.startswith('#'):
-        field10 = line.split()[9]
-        AD = field10.split(':')[1]
-        DP = int(field10.split(':')[2])
-        AD1 = float(AD.split(',')[0])
-        AD2 = float(AD.split(',')[1])
-        variant_AF = (AD1/(AD1+AD2))
-        AFs_list.append(variant_AF)
-        DPs_list.append(DP)
-        
+        line = line.rstrip()
+        field10 = line.split("\t")[9]
+        elements_in_field10 = len(field10.split(":"))
+        if elements_in_field10 == 5:
+            AD = field10.split(':')[1]
+            DP = int(field10.split(':')[2])
+            AD1 = float(AD.split(',')[0])
+            AD2 = float(AD.split(',')[1])
+            variant_AF = (AD1/(AD1+AD2))
+            AFs_list.append(variant_AF)
+            DPs_list.append(DP)
+        else:
+            print(line)
+            
 #        print("{}\t{}\t{}\t{:.4f}".format(AD,AD1,AD2,variant_AF))
 # print(AFs_list,DPs_list)
-
-        
+print(len(DPs_list))
+print(len(AFs_list))  
