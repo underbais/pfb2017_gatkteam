@@ -1,0 +1,32 @@
+INFO  04:56:28,056 HelpFormatter - ---------------------------------------------------------------------------------- 
+INFO  04:56:28,058 HelpFormatter - The Genome Analysis Toolkit (GATK) v3.8-0-ge9d806836, Compiled 2017/07/28 21:26:50 
+INFO  04:56:28,058 HelpFormatter - Copyright (c) 2010-2016 The Broad Institute 
+INFO  04:56:28,059 HelpFormatter - For support and documentation go to https://software.broadinstitute.org/gatk 
+INFO  04:56:28,059 HelpFormatter - [Mon Oct 30 04:56:28 UTC 2017] Executing on Linux 4.4.0-1038-aws amd64 
+INFO  04:56:28,059 HelpFormatter - OpenJDK 64-Bit Server VM 1.8.0_121-b15 
+INFO  04:56:28,062 HelpFormatter - Program Args: -T HaplotypeCaller -R ./../../../ref/hg38.fa -I .//picard_arrg_output/ERR1977350.arrg.mrkdup.sorted.bam --genotyping_mode DISCOVERY -stand_call_conf 30 -o .//gatk_out/ERR1977350.arrg.mrkdup.sorted.vcf 
+INFO  04:56:28,065 HelpFormatter - Executing as gbauc@ip-172-30-0-147 on Linux 4.4.0-1038-aws amd64; OpenJDK 64-Bit Server VM 1.8.0_121-b15. 
+INFO  04:56:28,065 HelpFormatter - Date/Time: 2017/10/30 04:56:28 
+INFO  04:56:28,065 HelpFormatter - ---------------------------------------------------------------------------------- 
+INFO  04:56:28,065 HelpFormatter - ---------------------------------------------------------------------------------- 
+ERROR StatusLogger Unable to create class org.apache.logging.log4j.core.impl.Log4jContextFactory specified in jar:file:/usr/local/anaconda/opt/gatk-3.8/GenomeAnalysisTK.jar!/META-INF/log4j-provider.properties
+ERROR StatusLogger Log4j2 could not find a logging implementation. Please add log4j-core to the classpath. Using SimpleLogger to log to the console...
+INFO  04:56:28,170 GenomeAnalysisEngine - Deflater: IntelDeflater 
+INFO  04:56:28,170 GenomeAnalysisEngine - Inflater: IntelInflater 
+INFO  04:56:28,170 GenomeAnalysisEngine - Strictness is SILENT 
+##### ERROR ------------------------------------------------------------------------------------------
+##### ERROR A USER ERROR has occurred (version 3.8-0-ge9d806836): 
+##### ERROR
+##### ERROR This means that one or more arguments or inputs in your command are incorrect.
+##### ERROR The error message below tells you what is the problem.
+##### ERROR
+##### ERROR If the problem is an invalid argument, please check the online documentation guide
+##### ERROR (or rerun your command with --help) to view allowable command-line arguments for this tool.
+##### ERROR
+##### ERROR Visit our website and forum for extensive documentation and answers to 
+##### ERROR commonly asked questions https://software.broadinstitute.org/gatk
+##### ERROR
+##### ERROR Please do NOT post this error to the GATK forum unless you have really tried to fix it yourself.
+##### ERROR
+##### ERROR MESSAGE: Fasta dict file /data/gbauc/script/pfb2017_gatkteam/run_bwa-samtools-picard/./../../../ref/hg38.dict for reference /data/gbauc/script/pfb2017_gatkteam/run_bwa-samtools-picard/./../../../ref/hg38.fa does not exist. Please see https://software.broadinstitute.org/gatk/documentation/article?id=1601 for help creating it.
+##### ERROR ------------------------------------------------------------------------------------------
