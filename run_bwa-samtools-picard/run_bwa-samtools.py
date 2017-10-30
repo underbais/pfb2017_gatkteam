@@ -101,10 +101,10 @@ filepath_samtool = call_samtools_sort(input_sam)
 if filepath_samtool is None:
     print('"something went wrong in samtools"')
     sys.exit(1)
-print(filepath_samtool)
+#print(filepath_samtool)
 #sys.exit(0)
 
-#### PICARD function
+#### PICARD MD function
 ####################
 # Function will return a '.mrkdup.sorted.bam' file
 
@@ -116,15 +116,15 @@ sample_name = (os.path.basename(input_bam)).split('.')[0]
 #my_path = os.getcwd()
 #print('current_dir', dir_path)
 
-def call_picard_mrkup(input_bam, picard_output = "picard_output", my_path = "./"):
+def call_picard_md(input_bam, picard_MD_output = "picard_output", my_path = "./"):
     execution = 0
     try:
 
         # create picard output folder
-        if not os.path.exists(picard_output):
-            os.makedirs(picard_output)
+        if not os.path.exists(picard_MD_output):
+            os.makedirs(picard_MD_output)
            
-        file_out = "{}/{}/{}.mrkdup.sorted.bam".format(my_path,picard_output,sample_name)
+        file_out = "{}/{}/{}.mrkdup.sorted.bam".format(my_path,picard_MD_output,sample_name)
         #print(file_out)
         log_out =  "{}/picard.mrkdup.sorted.bam.log".format(my_path)
         #print(log_out)
@@ -149,13 +149,63 @@ def call_picard_mrkup(input_bam, picard_output = "picard_output", my_path = "./"
     return execution
 
 # get function output and  error:
-filepath_picard_mrkup = call_picard_mrkup(input_bam)
-if filepath_picard_mrkup is None:
+filepath_picard_md = call_picard_md(input_bam)
+if filepath_picard_md is None:
     print('"something went wrong in Picard_mark_duplicates"')
     sys.exit(1)
-    print(filepath_picard_mrkup)
-sys.exit(0)
+    print(filepath_picard_md)
+#sys.exit(0)
             
 ##### PICARD function ARRG
 ##########################
+
+input_picard_md = filepath_picard_md
+#print(input_picard_md)
+sample_name = (os.path.basename(input_picard_md)).split('.')[0]
+#sample_name = os.path.basename(input_bam).split(".")
+#print(sample_name)
+
+outpath = sys.argv[2]
+
+def call_picard_groups(input_picard_md, picard_arrg_out = "picard_arrg_out", my_path = "./"):
+    execution = 0
+    try:
+        if not os.path.exists(picard_arrg_out):
+            os.makedirs(picard_arrg_out)
+        file_out = "{}/{}/{}.arrg.mrkdup.sorted.bam".format(my_path,picard_arrg_out,sample_name)
+        #print(file_out)
+        log_out =  "{}/picard.arrg.mrkdup.sorted.bam.log".format(my_path)
+        #print(log_out)
+            
+	#run gatk HaplotypeCaller
+        cmd = "java -jar /usr/local/anaconda/share/picard-2.14-0/picard.jar AddOrReplaceReadGroups I={} O={} RGLB=lib1 RGPL=illumina RGPU=dummy RGSM={}".format(input_picard_md, file_out, sample_name)
+        proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+        #get output and errors
+        outs,errs = proc.communicate()
+        
+	#write output (from byte to ascii)
+        out_errs = errs.decode("ascii")
+        out_log = open(log_out, "w")
+        out_log.write(out_errs)
+        out_log.close()
+        execution = file_out
+        
+    except Exception as e:
+        print(str(e))
+        execution = 1
+    return execution  #return the proc object inclunding binary output and error log
+
+filepath_picard_arrg = call_picard_groups(input_picard_md)
+print(filepath_picard_arrg)
+
+if filepath_picard_arrg is None:
+    print('"something went wrong in Picard_ARRG"')
+    sys.exit(1)
+print(filepath_picard_arrg)
+sys.exit(0)
+
+
+#### Picard CSD_FAIDX
+#####################
 
